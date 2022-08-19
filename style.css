@@ -125,17 +125,21 @@ button:active {
 }
 
 button:nth-of-type(2) {
+  display : none;
+}
+
+button:nth-of-type(3) {
   color: hsl(0, 0%, 0%);
   background-color: hsla(0, 100%, 50%, 0.1);
 }
 
-button:nth-of-type(2):hover,
-button:nth-of-type(2):focus {
+button:nth-of-type(3):hover,
+button:nth-of-type(3):focus {
   color: hsl(0, 0%, 100%);
   background-color: hsla(0, 100%, 50%, 0.6);
 }
 
-button:nth-of-type(2):active {
+button:nth-of-type(3):active {
   color: hsl(0, 0%, 100%);
   background-color: hsla(0, 100%, 30%, 0.6);
 }
