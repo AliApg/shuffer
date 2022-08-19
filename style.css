@@ -46,13 +46,12 @@ body {
 }
 
 .main {
-  height : auto;
   display : flex;
   align-items: center;
   flex-direction : column;
   justify-content : center;
   gap : 1em;
-  padding : 1em;
+  padding : 0 1em 1em;
   width : 30rem;
   max-width : 90%;
   border-radius : 1em;
@@ -60,15 +59,23 @@ body {
   box-shadow : .3em .3em 1em hsla(0, 0%, 0%, 0.4);
 }
 
+.additional {
+  /* transition: max-height .3s ease-in-out; */
+  max-height: 0;
+  overflow: hidden;
+}
+
+.additional.active {
+  max-height: 45px;
+}
+
 p {
+  padding-top : 1em;
   display : none;
-  opacity : 0;
-  transition : 1s ease opacity;
 }
 
 p.active {
   display : block;
-  opacity : 1;
 }
 
 p,
@@ -98,8 +105,8 @@ button {
 
 input:hover,
 input:focus,
-button:nth-of-type(1):hover,
-button:nth-of-type(1):focus {
+button:hover,
+button:focus {
   outline : none;
   transform: scale(1.01);
   color : hsl(0, 0%, 0%);
@@ -111,7 +118,7 @@ input:hover::placeholder {
   color : hsl(0, 0%, 0%);
 }
 
-button:nth-of-type(1):active {
+button:active {
   transform: scale(.99);
   color : hsl(0, 0%, 90%);
   background-color : hsl(0, 0%, 0%);
@@ -124,13 +131,11 @@ button:nth-of-type(2) {
 
 button:nth-of-type(2):hover,
 button:nth-of-type(2):focus {
-  transform: scale(1.01);
   color: hsl(0, 0%, 100%);
   background-color: hsla(0, 100%, 50%, 0.6);
 }
 
 button:nth-of-type(2):active {
-  transform: scale(.99);
   color: hsl(0, 0%, 100%);
   background-color: hsla(0, 100%, 30%, 0.6);
 }
