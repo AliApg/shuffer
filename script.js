@@ -9,9 +9,9 @@ var answer = document.querySelector('#answer');
 var additional = document.querySelector('.additional');
 
 const colorsDict = {
-                    "YEllow" : "#ffcb37" ,
-                    "GREEN" : "#005d56" ,
-                    "BROWN" : "#943d1c" ,
+                    "YELLOW" : "#ffcb37" ,
+                    "GREEN" : "#2B7A0B" ,
+                    "BROWN" : "#61481C" ,
                     "BLUE" : "#0052b8" ,
                     "PINK" : "#ff83a1" ,
                     "BLACK" : "#0b0b0d" ,
@@ -83,13 +83,13 @@ function submit() {
         document.querySelector('#answer').innerHTML = people[nameIn.value]
         document.querySelector('#result').style.display = 'block';
 
+        document.querySelector('#answer').style.color = colorsDict[people[nameIn.value]];
+
         nameIn.style.display = 'none';
         document.querySelector('.main label').style.display = 'none';
         document.querySelector('.main button:nth-of-type(1)').style.display = 'none';
         document.querySelector('.main button:nth-of-type(2)').style.display = 'block';
         document.querySelector('.main button:nth-of-type(4)').style.display = 'none';
-
-
 
         nameIn.value = "";
     }
@@ -133,6 +133,7 @@ function ok(x) {
 
             document.querySelector('.main button:nth-of-type(2)').style.display = 'none';
             document.querySelector('.main button:nth-of-type(4)').style.display = 'block';
+            document.querySelector('#result').style.display = 'none';
 
             if (colors.length == 0) {
 
@@ -141,7 +142,6 @@ function ok(x) {
             } else {
 
                 nameIn.style.display = 'block';
-                document.querySelector('#result').style.display = 'none';
                 document.querySelector('.main label').style.display = 'block';
                 document. querySelector('.main button:nth-of-type(1)').style.display = 'block';
             }

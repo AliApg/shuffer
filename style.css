@@ -13,7 +13,7 @@ body {
   align-items : center;
   flex-direction : column;
   justify-content : center;
-  animation : shuffer 120s ease-in-out infinite;
+  animation : shuffer 24s ease-in-out infinite;
 }
 
 @keyframes shuffer {
@@ -28,7 +28,7 @@ body {
   }
 
   30% {
-    background-color : #943d1c;
+    background-color : #61481C;
   }
 
   50% {
@@ -84,6 +84,8 @@ button {
   font-family : "jura";
   font-weight : bold;
   font-size : clamp(.9rem, 5vw, 1.15rem);
+  text-shadow : .03em .03em .02em hsla(0, 0%, 100%, 0.6),
+                -.03em -.03em .02em hsla(0, 0%, 0%, 0.6);
 }
 
 input,
@@ -107,7 +109,7 @@ input:focus,
 button:hover,
 button:focus {
   outline : none;
-  transform: scale(1.01);
+  transform : scale(1.01);
   color : hsl(0, 0%, 0%);
   background-color : hsla(0, 0%, 100%, 0.85);
 }
@@ -118,7 +120,7 @@ input:hover::placeholder {
 }
 
 button:active {
-  transform: scale(.99);
+  transform : scale(.99);
   color : hsl(0, 0%, 90%);
   background-color : hsl(0, 0%, 0%);
 }
@@ -130,17 +132,24 @@ button:nth-of-type(3) {
 
 button:nth-of-type(4) {
   display : none;
-  color: hsl(0, 0%, 0%);
-  background-color: hsla(0, 100%, 50%, 0.1);
+  color : hsl(0, 0%, 0%);
+  background-color : hsla(0, 100%, 50%, 0.1);
 }
 
 button:nth-of-type(4):hover,
 button:nth-of-type(4):focus {
   color: hsl(0, 0%, 100%);
-  background-color: hsla(0, 100%, 50%, 0.6);
+  background-color : hsla(0, 100%, 50%, 0.6);
 }
 
 button:nth-of-type(4):active {
   color: hsl(0, 0%, 100%);
   background-color: hsla(0, 100%, 30%, 0.6);
+}
+
+#answer {
+  padding : 0 .5em 0 0;
+  font-size : clamp(1.1rem, 5vw, 1.35rem);
+  text-shadow : .06em .06em .02em hsla(0, 0%, 100%, 0.6),
+                -.06em -.06em .02em hsla(0, 0%, 0%, 0.6);
 }
