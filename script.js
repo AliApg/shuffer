@@ -6,9 +6,6 @@ var nameIn = document.querySelector('#nameIn');
 var result = document.querySelector('#result');
 var answer = document.querySelector('#answer');
 
-var okBtn = document.querySelector('.main button:nth-of-type(2)')
-var finishBtn = document.querySelector('.main button:nth-of-type(3)')
-
 var additional = document.querySelector('.additional');
 
 const colorsDict = {
@@ -20,25 +17,11 @@ const colorsDict = {
                     "BLACK" : "#0b0b0d" ,
                 };
 
-var colors = Object.keys(colorsDict)
+var colors = Object.keys(colorsDict);
 
-var selected = [];
+var people = {};
 
 let timer;
-
-
-
-
-
-if (selected.length == 0) {
-
-    finishBtn.style.display='none';
-
-}
-
-
-
-
 
 function submit() {
 
@@ -46,13 +29,13 @@ function submit() {
 
     if (nameIn.value == "") {
 
-        clearTimeout(timer)
+        clearTimeout(timer);
 
         alert1.classList.add("active");
         additional.classList.add("active");
 
-        additional.style.maxHeight = "40px";
-        additional.style.transition = "max-height .3s";
+        additional.style.maxHeight = "55px";
+        additional.style.transition = "max-height .5s ease-in-out";
 
         timer = setTimeout(function () {
 
@@ -63,19 +46,19 @@ function submit() {
                 alert1.classList.remove("active");
                 additional.classList.remove("active");
 
-            }, 300);
+            }, 500);
 
-        }, 2700);
+        }, 2500);
 
-    } else if (nameIn.value == 'ALI') {
+    } else if (Object.keys(people).includes(nameIn.value)) {
 
-        clearTimeout(timer)
+        clearTimeout(timer);
 
         alert2.classList.add("active");
         additional.classList.add("active");
 
-        additional.style.maxHeight = "40px";
-        additional.style.transition = "max-height .3s";
+        additional.style.maxHeight = "55px";
+        additional.style.transition = "max-height .5s ease-in-out";
 
         timer = setTimeout(function () {
 
@@ -86,17 +69,43 @@ function submit() {
                 alert2.classList.remove("active");
                 additional.classList.remove("active");
 
-            }, 300);
+            }, 500);
 
-        }, 2700);
+        }, 2500);
 
     } else {
+        additional.style.maxHeight = "55px";
+        additional.style.transition = "max-height .5s ease-in-out";
 
-        null;
+        people[nameIn.value] = colors[ Math.floor(Math.random() * colors.length) ]
+        colors = colors.filter(data => data != people[nameIn.value]);
+
+        document.querySelector('#answer').innerHTML = people[nameIn.value]
+        document.querySelector('#result').style.display = 'block';
+
+        nameIn.style.display = 'none';
+        document.querySelector('.main label').style.display = 'none';
+        document.querySelector('.main button:nth-of-type(1)').style.display = 'none';
+        document.querySelector('.main button:nth-of-type(2)').style.display = 'block';
+        document.querySelector('.main button:nth-of-type(4)').style.display = 'none';
+
+
+
+        nameIn.value = "";
+    }
+
+
+    if (colors.length == 0) {
+
+        document.querySelector('.main button:nth-of-type(1)').style.display = 'none';
+
+    } else if (colors.length == 6) {
+
+        document.querySelector('.main button:nth-of-type(4)').style.display = 'block';
 
     }
-}
 
+}
 
 
 
@@ -105,20 +114,44 @@ function finish() {
 
     nameIn.value = "";
     if (confirm("Show everybody's color??!") == true) {
-        finishBtn.style.display = 'none';
+        nameIn.style.display = 'none';
+        document.querySelector('.main label').style.display = 'none';
+        document.querySelector('.main button:nth-of-type(3)').style.display = 'block';
+        document.querySelector('.main button:nth-of-type(4)').style.display = 'none';
     }
 
 }
 
 
 
-
-
-function ok() {
+function ok(x) {
 
     nameIn.value = "";
-    if (confirm("Did you memorize your color??!") == true) {
-        okBtn.style.display = 'none';
+
+    if (x == 1) {
+        if (confirm("Did you memorize your color??!") == true) {
+
+            document.querySelector('.main button:nth-of-type(2)').style.display = 'none';
+            document.querySelector('.main button:nth-of-type(4)').style.display = 'block';
+
+            if (colors.length == 0) {
+
+                document.querySelector('.main button:nth-of-type(1)').style.display = 'none';
+
+            } else {
+
+                nameIn.style.display = 'block';
+                document.querySelector('#result').style.display = 'none';
+                document.querySelector('.main label').style.display = 'block';
+                document. querySelector('.main button:nth-of-type(1)').style.display = 'block';
+            }
+        }
+    }
+
+    if (x == 0) {
+        if (confirm("Did you want to reset the game??!") == true) {
+            location.reload()
+        }
     }
 
 }

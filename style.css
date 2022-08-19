@@ -60,13 +60,12 @@ body {
 }
 
 .additional {
-  /* transition: max-height .3s ease-in-out; */
   max-height: 0;
   overflow: hidden;
 }
 
 .additional.active {
-  max-height: 45px;
+  max-height: 55px;
 }
 
 p {
@@ -124,22 +123,24 @@ button:active {
   background-color : hsl(0, 0%, 0%);
 }
 
-button:nth-of-type(2) {
+button:nth-of-type(2),
+button:nth-of-type(3) {
   display : none;
 }
 
-button:nth-of-type(3) {
+button:nth-of-type(4) {
+  display : none;
   color: hsl(0, 0%, 0%);
   background-color: hsla(0, 100%, 50%, 0.1);
 }
 
-button:nth-of-type(3):hover,
-button:nth-of-type(3):focus {
+button:nth-of-type(4):hover,
+button:nth-of-type(4):focus {
   color: hsl(0, 0%, 100%);
   background-color: hsla(0, 100%, 50%, 0.6);
 }
 
-button:nth-of-type(3):active {
+button:nth-of-type(4):active {
   color: hsl(0, 0%, 100%);
   background-color: hsla(0, 100%, 30%, 0.6);
 }
