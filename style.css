@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Jura&display=swap');
+
+*, *::after, *::before {
+  margin : 0;
+  padding : 0;
+  font-weight : bold;
+  font-family : "jura";
+  box-sizing : border-box;
+}
+
+body {
+  width : 100vw;
+  height : 100vh;
+  display : flex;
+  align-items : center;
+  flex-direction : column;
+  justify-content : center;
+  animation: shuffer 24s ease-in-out infinite;
+}
+
+@keyframes shuffer {
+
+  0%,
+  100% {
+    background: #ffcb37;
+  }
+
+  16.5% {
+    background: #005d56;
+  }
+
+  33% {
+    background: #943d1c;
+  }
+
+  49.5% {
+    background: #0052b8;
+  }
+
+  66% {
+    background: #ff83a1;
+  }
+
+  82.5% {
+    background: #0b0b0d;
+  }
+}
+
+.main {
+  gap : 1em;
+  width : 90vw;
+  padding : 1em;
+  display : flex;
+  max-width : 45em;
+  align-items: center;
+  border-radius : .7em;
+  flex-direction: column;
+  justify-content: center;
+  background : hsla(0, 0%, 100%, 0.2);
+  box-shadow : .3em .3em 1em hsla(0, 0%, 0%, 0.4);
+}
+
+label {
+  font-size: 1.3em;
+}
+
+input {
+  width : 100%;
+  height : 3em;
+  padding : 0 1em;
+  font-size : 1.2em;
+  border-radius : .7em;
+  color: hsla(0, 0%, 0%);
+  background: hsla(0, 0%, 90%, 0.3);
+  transition: color 150ms ease-in-out,
+              background 200ms ease-in-out;
+  border: .1em solid rgba(0, 0, 0, .1);
+  box-shadow: .1em .1em .2em hsla(0, 0%, 0%, 0.3);
+
+}
+
+input:hover,
+input:focus {
+  outline : none;
+  color: hsl(0, 0%, 0%);
+  background: hsla(0, 0%, 100%, 0.85);
+}
+
+input:focus::placeholder,
+input:hover::placeholder {
+  color: hsl(0, 0%, 0%);
+}
+
+input:nth-child(3):active {
+  color: hsl(0, 0%, 90%);
+  background: hsl(0, 0%, 0%);
+}
