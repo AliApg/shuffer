@@ -60,12 +60,12 @@ body {
 }
 
 .additional {
-  max-height: 0;
+  max-height: 15em;
   overflow: hidden;
 }
 
 .additional.active {
-  max-height: 55px;
+  max-height: 20em;
 }
 
 p {

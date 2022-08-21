@@ -8,6 +8,11 @@ var answer = document.querySelector('#answer');
 
 var additional = document.querySelector('.additional');
 
+var btn1 = document.querySelector('.main button:nth-of-type(1)');
+var btn2 = document.querySelector('.main button:nth-of-type(2)');
+var btn3 = document.querySelector('.main button:nth-of-type(3)');
+var btn4 = document.querySelector('.main button:nth-of-type(4)');
+
 const colorsDict = {
                     "YELLOW" : "#ffcb37" ,
                     "GREEN" : "#2B7A0B" ,
@@ -25,6 +30,16 @@ let timer;
 
 function submit() {
 
+
+    if (colors.length == 0) {
+
+        btn1.style.display = 'none';
+
+    } else if (colors.length != 6) {
+
+        btn4.style.display = 'block';
+    }
+
     nameIn.value = nameIn.value.trim().toUpperCase();
 
     if (nameIn.value == "") {
@@ -35,7 +50,7 @@ function submit() {
         additional.classList.add("active");
 
         additional.style.maxHeight = "55px";
-        additional.style.transition = "max-height .5s ease-in-out";
+        additional.style.transition = "max-height .25s ease-in-out";
 
         timer = setTimeout(function () {
 
@@ -46,9 +61,9 @@ function submit() {
                 alert1.classList.remove("active");
                 additional.classList.remove("active");
 
-            }, 500);
+            }, 250);
 
-        }, 2500);
+        }, 2750);
 
     } else if (Object.keys(people).includes(nameIn.value)) {
 
@@ -58,7 +73,7 @@ function submit() {
         additional.classList.add("active");
 
         additional.style.maxHeight = "55px";
-        additional.style.transition = "max-height .5s ease-in-out";
+        additional.style.transition = "max-height .25s ease-in-out";
 
         timer = setTimeout(function () {
 
@@ -69,9 +84,9 @@ function submit() {
                 alert2.classList.remove("active");
                 additional.classList.remove("active");
 
-            }, 500);
+            }, 250);
 
-        }, 2500);
+        }, 2750);
 
     } else {
         additional.style.maxHeight = "55px";
@@ -87,24 +102,12 @@ function submit() {
 
         nameIn.style.display = 'none';
         document.querySelector('.main label').style.display = 'none';
-        document.querySelector('.main button:nth-of-type(1)').style.display = 'none';
-        document.querySelector('.main button:nth-of-type(2)').style.display = 'block';
-        document.querySelector('.main button:nth-of-type(4)').style.display = 'none';
+        btn1.style.display = 'none';
+        btn2.style.display = 'block';
+        btn4.style.display = 'none';
 
         nameIn.value = "";
     }
-
-
-    if (colors.length == 0) {
-
-        document.querySelector('.main button:nth-of-type(1)').style.display = 'none';
-
-    } else if (colors.length == 6) {
-
-        document.querySelector('.main button:nth-of-type(4)').style.display = 'block';
-
-    }
-
 }
 
 
@@ -116,10 +119,16 @@ function finish() {
     if (confirm("Show everybody's color??!") == true) {
         nameIn.style.display = 'none';
         document.querySelector('.main label').style.display = 'none';
-        document.querySelector('.main button:nth-of-type(3)').style.display = 'block';
-        document.querySelector('.main button:nth-of-type(4)').style.display = 'none';
-    }
+        btn1.style.display = 'none';
+        btn3.style.display = 'block';
+        btn4.style.display = 'none';
 
+        for (const [key, value] of Object.entries(people)) {
+            document.querySelector('#end').innerHTML = document.querySelector('#end').innerHTML + "\n" + key + " : " + value;
+        }
+
+        document.querySelector('#end').style.display = 'block';
+    }
 }
 
 
@@ -131,13 +140,13 @@ function ok(x) {
     if (x == 1) {
         if (confirm("Did you memorize your color??!") == true) {
 
-            document.querySelector('.main button:nth-of-type(2)').style.display = 'none';
-            document.querySelector('.main button:nth-of-type(4)').style.display = 'block';
+            btn2.style.display = 'none';
+            btn4.style.display = 'block';
             document.querySelector('#result').style.display = 'none';
 
             if (colors.length == 0) {
 
-                document.querySelector('.main button:nth-of-type(1)').style.display = 'none';
+                btn1.style.display = 'none';
 
             } else {
 
@@ -153,5 +162,4 @@ function ok(x) {
             location.reload()
         }
     }
-
 }
