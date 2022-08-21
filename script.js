@@ -1,17 +1,17 @@
-var alert1 = document.querySelector('#alert1');
-var alert2 = document.querySelector('#alert2');
+const alert1 = document.querySelector('#alert1');
+const alert2 = document.querySelector('#alert2');
 
-var nameIn = document.querySelector('#nameIn');
+const nameIn = document.querySelector('#nameIn');
 
-var result = document.querySelector('#result');
-var answer = document.querySelector('#answer');
+const result = document.querySelector('#result');
+const answer = document.querySelector('#answer');
 
-var additional = document.querySelector('.additional');
+const additional = document.querySelector('.additional');
 
-var btn1 = document.querySelector('.main button:nth-of-type(1)');
-var btn2 = document.querySelector('.main button:nth-of-type(2)');
-var btn3 = document.querySelector('.main button:nth-of-type(3)');
-var btn4 = document.querySelector('.main button:nth-of-type(4)');
+const btn1 = document.querySelector('.main button:nth-of-type(1)');
+const btn2 = document.querySelector('.main button:nth-of-type(2)');
+const btn3 = document.querySelector('.main button:nth-of-type(3)');
+const btn4 = document.querySelector('.main button:nth-of-type(4)');
 
 const colorsDict = {
                     "YELLOW" : "#ffcb37" ,
@@ -63,7 +63,7 @@ function submit() {
 
             }, 250);
 
-        }, 2750);
+        }, 1750);
 
     } else if (Object.keys(people).includes(nameIn.value)) {
 
@@ -86,7 +86,7 @@ function submit() {
 
             }, 250);
 
-        }, 2750);
+        }, 1750);
 
     } else {
         additional.style.maxHeight = "55px";
@@ -112,6 +112,7 @@ function submit() {
 
 
 
+const End = document.querySelector('#end');
 
 function finish() {
 
@@ -124,10 +125,12 @@ function finish() {
         btn4.style.display = 'none';
 
         for (const [key, value] of Object.entries(people)) {
-            document.querySelector('#end').innerHTML = document.querySelector('#end').innerHTML + "\n" + key + " : " + value;
+
+            End.innerHTML = End.innerHTML + key + " : " + value + "<br><br>";
         }
 
-        document.querySelector('#end').style.display = 'block';
+        End.style.display = 'block';
+        additional.style.maxHeight = "300px";
     }
 }
 
