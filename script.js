@@ -14,18 +14,16 @@ const btn3 = document.querySelector('.main button:nth-of-type(3)');
 const btn4 = document.querySelector('.main button:nth-of-type(4)');
 
 const colorsDict = {
-                    "YELLOW" : "#ffcb37" ,
-                    "GREEN" : "#2B7A0B" ,
-                    "BROWN" : "#61481C" ,
-                    "BLUE" : "#0052b8" ,
-                    "PINK" : "#ff83a1" ,
-                    "BLACK" : "#0b0b0d" ,
-                };
+    "YELLOW": "#ffcb37",
+    "GREEN": "#2B7A0B",
+    "BROWN": "#61481C",
+    "BLUE": "#0052b8",
+    "PINK": "#ff83a1",
+    "BLACK": "#0b0b0d",
+};
 
 var colors = Object.keys(colorsDict);
-
 var people = {};
-
 let timer;
 
 function submit() {
@@ -92,7 +90,7 @@ function submit() {
         additional.style.maxHeight = "55px";
         additional.style.transition = "max-height .5s ease-in-out";
 
-        people[nameIn.value] = colors[ Math.floor(Math.random() * colors.length) ]
+        people[nameIn.value] = colors[Math.floor(Math.random() * colors.length)]
         colors = colors.filter(data => data != people[nameIn.value]);
 
         document.querySelector('#answer').innerHTML = people[nameIn.value]
@@ -124,9 +122,11 @@ function finish() {
         btn3.style.display = 'block';
         btn4.style.display = 'none';
 
+        End.innerHTML = '';
         for (const [key, value] of Object.entries(people)) {
-
-            End.innerHTML = End.innerHTML + key + " : " + value + "<br><br>";
+            const color = colorsDict[value.toUpperCase()]
+            // End.innerHTML += key + " : " + value + "<br><br>";
+            End.innerHTML += `<p class="active" style="text-align: center; color: ${color};">${key} : <span style="color: ${color};">${value}</span></p>`;
         }
 
         End.style.display = 'block';
@@ -155,7 +155,7 @@ function ok(x) {
 
                 nameIn.style.display = 'block';
                 document.querySelector('.main label').style.display = 'block';
-                document. querySelector('.main button:nth-of-type(1)').style.display = 'block';
+                document.querySelector('.main button:nth-of-type(1)').style.display = 'block';
             }
         }
     }
@@ -166,3 +166,11 @@ function ok(x) {
         }
     }
 }
+
+// Adding event listener for Enter key press
+document.getElementById("nameIn").addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        submit();
+    }
+});
